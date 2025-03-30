@@ -31,17 +31,19 @@ def on_first_button_click():
 			root.after(3000, show_second_button)  # 3000ms = 3 seconds
 			label.pack_forget()
 		else:
-
+			messagebox.showerror("Invalid File", "Please select a .jpg or .jpeg image.")
+	else:
+		messagebox.showinfo("No File", "No image selected.")
 
 # Initial label
 label = tk.Label(root, text="Click the button below")
 label.pack(pady=10)
+
 # Second label
 label_2 = tk.Label(root)
 
-
 # First button
-first_button = tk.Button(root, text="Click me", command=on_first_button_click)
+first_button = tk.Button(root, text="Upload and Scan Image", command=on_first_button_click)
 first_button.pack(pady=10)
 
 # Run the app
