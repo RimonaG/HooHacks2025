@@ -1,4 +1,6 @@
 import tkinter as tk
+from PIL import Image, ImageTk
+from tkinter import Tk, Label
 from tkinter import ttk
 import webbrowser
 from tkinter import filedialog, messagebox
@@ -40,17 +42,15 @@ def on_second_button_click():
 
 #open pop up with link to the song
 def show_link_popup(Song_url):
-	popup = tk.Toplevel()
-	popup.title("Click the link for your song!")
-	popup.geometry("400x200")
-	popup.configure(bg="#ADD8E6") #light blue
+	#popup = tk.Toplevel()
+	#popup.title("Click the link for your song!")
+	#popup.geometry("400x200")
+	#popup.configure(bg="#ADD8E6") #light blue
+	Songlink_label.config(text=Song_url)
+	Songlink_label.bind("<Button-1>", lambda e: webbrowser.open_new_tab(Song_url))
 
 	def callback(event):
 		webbrowser.open_new(Song_url)
-
-	link = tk.Label(popup, text=Song_url, fg="blue", cursor="hand2", bg="#ADD8E6")
-	link.pack(pady=20)
-	link.bind("<Button-1>", callback)
 
 
 # Function to start the timer
@@ -70,6 +70,7 @@ def on_first_button_click():
 			first_button.pack_forget()
 			label_2.config(text="Analyzing Photo...")
 			label_2.pack(pady=10)
+			image_display(file_path)
 			root.after(3000, show_second_button)  # 3000ms = 3 seconds
 			label.pack_forget()
 		else:
@@ -95,6 +96,22 @@ label3.pack(pady=10)
 first_button = tk.Button(root, text="Upload and Scan Image", command=on_first_button_click)
 first_button.pack(pady=10)
 first_button.configure(background="#ADD8E6")
+
+Songlink_label = tk.Label(root, text="", fg="blue", cursor="hand2", bg="#ADD8E6", font=("Helvetica", 12, "underline"))
+Songlink_label.pack(pady=10)
+
+# Image preview label (empty for now, will update after image is selected)
+image_label = tk.Label(root, bg="#ADD8E6")
+image_label.pack(pady=10)
+
+
+def image_display(filename):
+	#image display:
+	img = Image.open(filename)
+	img = img.resize((200, 200))
+	photo = ImageTk.PhotoImage(img)
+	image_label.config(image=photo)
+	image_label.image = photo
 
 # Run the app
 root.mainloop()
