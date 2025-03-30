@@ -10,6 +10,7 @@ def analyze_image(file_path):
         "scp", file_path, f"cna8eg@portal.cs.virginia.edu:{remote_path}"
     ])
 
+
     # Step 2: Run emotion detection remotely
     result = subprocess.run([
         "ssh", "cna8eg@portal.cs.virginia.edu",
