@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
-from EmptionDetection import deepFace
+import EmptionDetection as deepFace
 import os
 selected_image = None
 # Create the main window
@@ -16,8 +16,8 @@ def show_second_button():
 
 def on_second_button_click():
 	if selected_image:
-		emotion = deepFace(selected_image)
-		get_song(emotion)
+		emotion = deepFace.deepFaceAnalysis(selected_image)
+		deepFace.get_song(emotion)
 	else:
 		messagebox.showerror("Error", "No image path found.")
 # Function to start the timer

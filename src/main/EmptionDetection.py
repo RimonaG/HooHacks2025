@@ -17,14 +17,13 @@ def deepFaceAnalysis(image_path):
     return dominant_emotion
 
 #facial analysis
-def get_song():
-    name = #function from gui
-    if(not(library.contains_mood(deepFaceAnalysis(name)))):
+def get_song(emotion):
+    if(not(library.contains_mood(emotion))):
         print("No emotion detected")
         #tell user to add a recommendation or just find one randomly?
 
     else:
-        songList = library.get(deepFaceAnalysis(name))
+        songList = library.get(emotion)
         if(len(songList) > 0):
             song = random.choice(songList)
             if(input("Do you want song to play? :") == "yes"):
