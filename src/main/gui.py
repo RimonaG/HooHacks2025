@@ -10,7 +10,7 @@ root.geometry("300x200")
 
 # Function to show the second button after 3 seconds
 def show_second_button():
-	second_button = tk.Button(root, text="Click Here for Your Songs!", command=on_second_button_click())
+	second_button = tk.Button(root, text="Click Here for Your Songs!", command=on_second_button_click)
 	second_button.pack(pady=10)
 	label_2.pack_forget()
 

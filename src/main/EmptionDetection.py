@@ -1,4 +1,5 @@
 #from xxsubtype import bench
+from tkinter import messagebox
 
 from MusicLibrary import MusicLibrary
 
@@ -10,7 +11,7 @@ import webbrowser
 global dominant_emotion
 
 def deepFaceAnalysis(image_path):
-    img = "~/Desktop/folder/Angry.jpg"
+    img = image_path
     result = DeepFace.analyze(img_path = img , actions = ["emotion"])
     dominant_emotion = result[0]["dominant_emotion"]
     print("Detected emotion:", dominant_emotion)
@@ -26,7 +27,7 @@ def get_song(emotion):
         songList = library.get(emotion)
         if(len(songList) > 0):
             song = random.choice(songList)
-            if(input("Do you want song to play? :") == "yes"):
-                webbrowser.open_new_tab(song.url)
+            if messagebox.askyesno("Play Song", "Do you want to play a song?"):
+                webbrowser.open_new_tab(song)
 
 
