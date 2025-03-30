@@ -26,4 +26,6 @@ def analyze_image(file_path):
     # Step 3: Get the emotion result
     emotion = result.stdout.strip()
     print("Detected emotion:", emotion)
+
+    print("wow" + emotion)
     return emotion

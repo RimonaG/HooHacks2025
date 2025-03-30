@@ -38,7 +38,7 @@ class MusicLibrary:
         return False
 
     def get_song(self, mood):
-        if mood not in MusicLibrary.music_library:
+        if mood not in self.music_library:
             return "No emotion detected :("
         else:
             songList = self.music_library[mood]
