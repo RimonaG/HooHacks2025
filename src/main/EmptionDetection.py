@@ -18,16 +18,7 @@ def deepFaceAnalysis(image):
     return dominant_emotion
 
 #facial analysis: no longer in use because code was refactored to MusicLibrary due to dependency conflicts
-def facialAnalysis(emotion):
-    if(not(library.contains_mood(emotion))):
-        print("No emotion detected")
-        #tell user to add a recommendation or just find one randomly?
 
-    else:
-        songList = library.get(emotion)
-        if(len(songList) > 0):
-            song = random.choice(songList)
-            if messagebox.askyesno("Play Song", "Do you want to play a song?"):
-                webbrowser.open_new_tab(song)
+
 
 

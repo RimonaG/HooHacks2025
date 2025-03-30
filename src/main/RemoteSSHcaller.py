@@ -14,8 +14,11 @@ def analyze_image(file_path):
     # Step 2: Run emotion detection remotely
     result = subprocess.run([
         "ssh", "cna8eg@portal.cs.virginia.edu",
-        f"/sw/ubuntu2204/ebu082024/software/common/compiler/gcccore/13.2.0/python/3.11.5/bin/python3 /u/cna8eg/hoohacks/HooHacks2025/src/main/run_analysis.py {remote_path}"
-        #f"ssh cna8eg@gpusrv01.cs.virginia.edu 'python3 /u/cna8eg/hoohacks/HooHacks2025/src/main/SSHConnector.py {remote_path}'"
+        #f"/sw/ubuntu2204/ebu082024/software/common/compiler/gcccore/13.2.0/python/3.11.5/bin/python3 /u/cna8eg/hoohacks/HooHacks2025/src/main/SSHConnector.py {remote_path}"
+        "bash -l -c "
+        "\"/sw/ubuntu2204/ebu082024/software/common/compiler/gcccore/13.2.0/python/3.11.5/bin/python3 "
+        "/u/cna8eg/hoohacks/HooHacks2025/src/main/SSHConnector.py "
+        f"{remote_path}\""
     ], capture_output=True, text=True)
 
     print(result.stderr)

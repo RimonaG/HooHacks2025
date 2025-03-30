@@ -1,6 +1,6 @@
 import random
 import webbrowser
-from tkinter import messagebox
+#from tkinter import messagebox
 
 class MusicLibrary:
     music_library = {"happy": ["https://youtu.be/ZbZSe6N_BXs?si=Vv8UsoWLnXugD10C", "https://youtu.be/5NV6Rdv1a3I?si=z6yo9eb0AaaC5Ceh"], "sad": ["https://youtu.be/pB-5XG-DbAA?si=6KbkkYTIasxiu7gB", "https://youtu.be/k4V3Mo61fJM?si=iqPJN6SGt6DYawiT"],
@@ -44,6 +44,7 @@ class MusicLibrary:
             songList = self.music_library[mood]
             if (len(songList) > 0):
                 song = random.choice(songList)
-                if messagebox.askyesno("Play Song", "Do you want to play a song?"):
-                    webbrowser.open_new_tab(song)
+                print(song)
+                #if messagebox.askyesno("Play Song", "Do you want to play a song?"):
+                    #webbrowser.open_new_tab(song)
 
