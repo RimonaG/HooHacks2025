@@ -1,4 +1,4 @@
-from xxsubtype import bench
+#from xxsubtype import bench
 
 from deepface import DeepFace
 import random
