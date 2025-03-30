@@ -4,7 +4,7 @@ from deepface import DeepFace
 import random
 import webbrowser
 
-img = "happy.jpg"
+img = "Angry.jpg"
 
 result = DeepFace.analyze(img_path = img , actions = ["emotion"])
 dominant_emotion = result[0]["dominant_emotion"]
