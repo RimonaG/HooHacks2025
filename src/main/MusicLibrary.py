@@ -46,8 +46,8 @@ class MusicLibrary:
             songList = self.music_library[mood]
             if (len(songList) > 0):
                 song = random.choice(songList)
-                print(song)
-                if(input("Wanna go listen?: ")):
+                print("here is the Link to your song!: " + song)
+                if(input("Wanna go listen?: ")=="yes"):
                     webbrowser.open_new_tab(song)
                 #if messagebox.askyesno("Play Song", "Do you want to play a song?"):
                     #webbrowser.open_new_tab(song)
