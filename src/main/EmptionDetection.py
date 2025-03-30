@@ -30,3 +30,4 @@ def get_song():
             if(input("Do you want song to play? :") == "yes"):
                 webbrowser.open_new_tab(song.url)
 
+
