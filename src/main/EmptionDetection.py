@@ -9,7 +9,7 @@ import random
 import webbrowser
 global dominant_emotion
 
-def deepFace(image_path):
+def deepFaceAnalysis(image_path):
     img = "~/Desktop/folder/Angry.jpg"
     result = DeepFace.analyze(img_path = img , actions = ["emotion"])
     dominant_emotion = result[0]["dominant_emotion"]
@@ -19,12 +19,12 @@ def deepFace(image_path):
 #facial analysis
 def get_song():
     name = #function from gui
-    if(not(library.contains_mood(deepFace(name)))):
+    if(not(library.contains_mood(deepFaceAnalysis(name)))):
         print("No emotion detected")
         #tell user to add a recommendation or just find one randomly?
 
     else:
-        songList = library.get(deepFace(name))
+        songList = library.get(deepFaceAnalysis(name))
         if(len(songList) > 0):
             song = random.choice(songList)
             if(input("Do you want song to play? :") == "yes"):
