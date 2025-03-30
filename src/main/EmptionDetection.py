@@ -6,7 +6,7 @@ import webbrowser
 
 img = "happy.jpg"
 
-result = DeepFace.analyze(img = img , actions = ["emotion"])
+result = DeepFace.analyze(img_path = img , actions = ["emotion"])
 dominant_emotion = result[0]["dominant_emotion"]
 print("Detected emotion:", dominant_emotion)
 
