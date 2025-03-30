@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.venv/
+
 # React additions
 frontend/node_modules/
 frontend/build/
