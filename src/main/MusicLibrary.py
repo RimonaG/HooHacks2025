@@ -12,8 +12,7 @@ class MusicLibrary:
         return MusicLibrary.music_library.get(mood)
 
     def add_song(self, mood, song):
-        if mood not in MusicLibrary.music_library:
-            MusicLibrary.music_library[mood] = []
+        self.add_mood(mood, song)
         if song not in MusicLibrary.music_library[mood]:
             MusicLibrary.music_library[mood].append(song)
 
@@ -25,3 +24,12 @@ class MusicLibrary:
         if mood in MusicLibrary.music_library:
             if song in MusicLibrary.music_library[mood]:
                 return MusicLibrary.music_library[mood].remove(song)
+
+    def add_mood(self, mood, song):
+        if mood not in MusicLibrary.music_library:
+            MusicLibrary.music_library[mood] = [song]
+
+    def contains_mood(self, mood):
+        if mood in MusicLibrary.music_library:
+            return True
+        return False
