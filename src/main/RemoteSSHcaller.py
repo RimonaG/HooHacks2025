@@ -24,8 +24,8 @@ def analyze_image(file_path):
     print(result.stderr)
 
     # Step 3: Get the emotion result
-    emotion = result.stdout.strip()
+    # Step 3: Extract only the last line from the output
+    lines = result.stdout.strip().splitlines()
+    emotion = lines[-1]  # Assumes the last line is the emotion
     print("Detected emotion:", emotion)
-
-    print("wow" + emotion)
     return emotion
