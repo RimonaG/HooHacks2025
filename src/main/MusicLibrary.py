@@ -47,8 +47,10 @@ class MusicLibrary:
             if (len(songList) > 0):
                 song = random.choice(songList)
                 print("here is the Link to your song!: " + song)
-                if(input("Wanna go listen?: ")=="yes"):
-                    webbrowser.open_new_tab(song)
+
+                #if(input("Wanna go listen?: ")=="yes"):
+                    #webbrowser.open_new_tab(song)
+                return song
                 #if messagebox.askyesno("Play Song", "Do you want to play a song?"):
                     #webbrowser.open_new_tab(song)
 

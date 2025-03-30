@@ -1,16 +1,21 @@
 import tkinter as tk
+from tkinter import ttk
+import webbrowser
 from tkinter import filedialog, messagebox
 from MusicLibrary import MusicLibrary
-#import EmptionDetection as deepFace
 from RemoteSSHcaller import analyze_image
 
 library = MusicLibrary()
 import os
 selected_image = None
-# Create the main window
+# Create the main window and style(colors)
 root = tk.Tk()
-root.title("Timer Button Example")
-root.geometry("300x200")
+style = ttk.Style(root)
+style.theme_use("clam") #allows customization
+
+root.title("File Uploader")
+root.geometry("800x500")
+root.configure(background="#ADD8E6")
 
 # Function to show the second button after 3 seconds
 def show_second_button():
@@ -21,9 +26,33 @@ def show_second_button():
 def on_second_button_click():
 	if selected_image:
 		emotion = analyze_image(selected_image)
-		print(library.get_song(emotion.lower()))
+		song = library.get_song(emotion.lower())
+
+		label3.config(text="Emotional: " + emotion)
+
+		show_link_popup(song)
+	if messagebox.askyesno("Play Song", "Do you want to play a song?"):
+		webbrowser.open_new_tab(song)
+
 	else:
 		messagebox.showerror("Error", "No image path found.")
+
+
+#open pop up with link to the song
+def show_link_popup(Song_url):
+	popup = tk.Toplevel()
+	popup.title("Click the link for your song!")
+	popup.geometry("400x200")
+	popup.configure(bg="#ADD8E6") #light blue
+
+	def callback(event):
+		webbrowser.open_new(Song_url)
+
+	link = tk.Label(popup, text=Song_url, fg="blue", cursor="hand2", bg="#ADD8E6")
+	link.pack(pady=20)
+	link.bind("<Button-1>", callback)
+
+
 # Function to start the timer
 def on_first_button_click():
 	global selected_image
@@ -51,13 +80,21 @@ def on_first_button_click():
 # Initial label
 label = tk.Label(root, text="Click the button below")
 label.pack(pady=10)
+label.configure(background="#ADD8E6")
 
 # Second label
 label_2 = tk.Label(root)
+label_2.configure(background="#ADD8E6")
+
+label3 = tk.Label(root, text="", font=("Helvetica", 20), bg="#ADD8E6")
+label3.pack(pady=10)
+
+
 
 # First button
 first_button = tk.Button(root, text="Upload and Scan Image", command=on_first_button_click)
 first_button.pack(pady=10)
+first_button.configure(background="#ADD8E6")
 
 # Run the app
 root.mainloop()
