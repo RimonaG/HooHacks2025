@@ -1,8 +1,10 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
-import EmptionDetection as deepFace
+from MusicLibrary import MusicLibrary
+#import EmptionDetection as deepFace
 from RemoteSSHcaller import analyze_image
 
+library = MusicLibrary()
 import os
 selected_image = None
 # Create the main window
@@ -19,7 +21,7 @@ def show_second_button():
 def on_second_button_click():
 	if selected_image:
 		emotion = analyze_image(selected_image)
-		deepFace.get_song(emotion)
+		library.get_song(emotion)
 	else:
 		messagebox.showerror("Error", "No image path found.")
 # Function to start the timer

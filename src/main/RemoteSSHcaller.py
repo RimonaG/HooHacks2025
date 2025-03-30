@@ -7,12 +7,12 @@ def analyze_image(file_path):
 
     # Step 1: Upload image to the server
     subprocess.run([
-        "scp", file_path, f"cna8eg@gpusrv01.cs.virginia.edu:{remote_path}"
+        "scp", file_path, f"cna8eg@portal.cs.virginia.edu:{remote_path}"
     ])
 
     # Step 2: Run emotion detection remotely
     result = subprocess.run([
-        "ssh", "cna8eg@gpusrv01.cs.virginia.edu",
+        "ssh", "cna8eg@portal.cs.virginia.edu",
         f"python3 /u/cna8eg/hoohacks/HooHacks2025/src/main/run_analysis.py {remote_path}"
     ], capture_output=True, text=True)
 

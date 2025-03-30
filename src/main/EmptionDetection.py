@@ -8,7 +8,7 @@ library = MusicLibrary()
 from deepface import DeepFace
 import random
 import webbrowser
-global dominant_emotion
+
 
 def deepFaceAnalysis(image_path):
     img = image_path
