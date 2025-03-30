@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
+from EmptionDetection import deepFace
 import os
-
+selected_image = None
 # Create the main window
 root = tk.Tk()
 root.title("Timer Button Example")
@@ -9,18 +10,26 @@ root.geometry("300x200")
 
 # Function to show the second button after 3 seconds
 def show_second_button():
-	second_button = tk.Button(root, text="Click Here for Your Songs!")
+	second_button = tk.Button(root, text="Click Here for Your Songs!", command=on_second_button_click())
 	second_button.pack(pady=10)
 	label_2.pack_forget()
 
+def on_second_button_click():
+	if selected_image:
+		emotion = deepFace(selected_image)
+		get_song(emotion)
+	else:
+		messagebox.showerror("Error", "No image path found.")
 # Function to start the timer
 def on_first_button_click():
-	#Open file dilog to select an image
+	global selected_image
+
+	#Open file dialog to select an image
 	file_path = filedialog.askopenfilename(
 	title="Select an Image",
 	filetypes=[("JPEG files", "*.jpg *.jpeg"), ("All files", "*.*")]
 	)
-
+	selected_image = file_path
 	#Check if the user selected a file
 	if file_path:
 		if file_path.lower().endswith(('.jpg', '.jpeg')):
