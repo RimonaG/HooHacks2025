@@ -1,4 +1,5 @@
-import random, webbrowser
+import random
+import webbrowser
 from tkinter import messagebox
 
 class MusicLibrary:
@@ -38,7 +39,7 @@ class MusicLibrary:
 
     def get_song(self, mood):
         if mood not in MusicLibrary.music_library:
-            return "No emotion detected"
+            return "No emotion detected :("
         else:
             songList = self.music_library[mood]
             if (len(songList) > 0):

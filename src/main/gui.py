@@ -21,7 +21,7 @@ def show_second_button():
 def on_second_button_click():
 	if selected_image:
 		emotion = analyze_image(selected_image)
-		library.get_song(emotion)
+		print(library.get_song(emotion.lower()))
 	else:
 		messagebox.showerror("Error", "No image path found.")
 # Function to start the timer
